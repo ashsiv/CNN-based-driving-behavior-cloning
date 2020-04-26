@@ -1,25 +1,27 @@
-# Behavioral Cloning Project
+# CNN based driving behavior cloning
 
-[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
+In this project, a CNN Neural Network architecture is trained with user driving behavior data on a track and then the car is attempted to be driven autonomously around the track. [NVIDIA's End to End Deep neural network architecture](https://devblogs.nvidia.com/deep-learning-self-driving-cars/) is used for this project.
 
-Overview
+
+
+* The input to the neural network architecture is a set of camera images obtained from three sources of camera located in the left, center and right sections of the hood of the car.
+* The predicted output variable is the steering angle command.
 ---
-This repository contains starting files for the Behavioral Cloning Project.
+# Data Preprocessing
+The incoming data from three cameras (left, right and center) are first cropped to appropriate size before subjecting them to training. This helps to keep the region of focus only within the lane of interest.
 
-In this project, you will use what you've learned about deep neural networks and convolutional neural networks to clone driving behavior. You will train, validate and test a model using Keras. The model will output a steering angle to an autonomous vehicle.
+![Image from camera](https://github.com/ashsiv/CNN-based-driving-behavior-cloning/blob/master/images/cover_image.JPG)
+![Image cropped to region of interest](https://github.com/ashsiv/CNN-based-driving-behavior-cloning/blob/master/images/cropped.JPG)
 
-We have provided a simulator where you can steer a car around a track for data collection. You'll use image data and steering angles to train a neural network and then use this model to drive the car autonomously around the track.
 
-We also want you to create a detailed writeup of the project. Check out the [writeup template](https://github.com/udacity/CarND-Behavioral-Cloning-P3/blob/master/writeup_template.md) for this project and use it as a starting point for creating your own writeup. The writeup can be either a markdown file or a pdf document.
+# Network Architecture
+---
+The network architecture consists of 9 layers, including a normalization layer, 5 convolutional layers, and 3 fully connected layers
 
-To meet specifications, the project will require submitting five files: 
-* model.py (script used to create and train the model)
-* drive.py (script to drive the car - feel free to modify this file)
-* model.h5 (a trained Keras model)
-* a report writeup file (either markdown or pdf)
-* video.mp4 (a video recording of your vehicle driving autonomously around the track for at least one full lap)
 
-This README file describes how to output the video in the "Details About Files In This Directory" section.
+
+
+
 
 Creating a Great Writeup
 ---
@@ -112,14 +114,10 @@ python video.py run1 --fps 48
 
 Will run the video at 48 FPS. The default FPS is 60.
 
-#### Why create a video
+## Results
 
-1. It's been noted the simulator might perform differently based on the hardware. So if your model drives succesfully on your machine it might not on another machine (your reviewer). Saving a video is a solid backup in case this happens.
-2. You could slightly alter the code in `drive.py` and/or `video.py` to create a video of what your model sees after the image is processed (may be helpful for debugging).
 
-### Tips
-- Please keep in mind that training images are loaded in BGR colorspace using cv2 while drive.py load images in RGB to predict the steering angles.
+1. The car was found to safely manuever around the track.
+2. Taking additional training data around curves of the road track, augmenting the data with flipped images & steering angles, helped to keep the lane cross track error as low as possible.
 
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
 
