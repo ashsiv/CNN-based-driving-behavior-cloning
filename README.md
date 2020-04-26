@@ -24,7 +24,9 @@ In keras implementation, a lambda layer is used to parallelize image normalizati
 model.add(Lambda(lambda x: (x / 255.0) - 0.5, input_shape=(160,320,3)))
 ```
 ### Steering offset
-Multiple camera images aid data augmentation. For example, if the model is trained to associate a given image from the center camera with a left turn, then the model can also be trained to associate the corresponding image from the left camera with a somewhat softer left turn and the  image from the right camera with an even harder left turn.During training, the left and right camera images are used to train the model as if they were coming from the center camera. For this purpose, a steering offset factor of + 0.2 deg is used for left image and a steering offset of -0.2 deg is used for the right image.
+Multiple camera images aid data augmentation. For example, if the model is trained to associate a given image from the center camera with a left turn, then the model can also be trained to associate the corresponding image from the left camera with a somewhat softer left turn and the  image from the right camera with an even harder left turn.
+
+During training, the left and right camera images are used to train the model as if they were coming from the center camera. For this purpose, a steering offset factor of + 0.2 deg is used for left image and a steering offset of -0.2 deg is used for the right image.
 
 ---
 ## Model summary
