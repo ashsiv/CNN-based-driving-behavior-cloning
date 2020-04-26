@@ -10,7 +10,7 @@ In this project, a CNN Neural Network architecture is trained with user driving 
 # Data Preprocessing
 The incoming data from three cameras (left, right and center) are first cropped to appropriate size before subjecting them to training. This helps to keep the region of focus only within the lane of interest.
 
-![Image from camera](https://github.com/ashsiv/CNN-based-driving-behavior-cloning/blob/master/images/cover_image.JPG)
+![Image from camera](https://github.com/ashsiv/CNN-based-driving-behavior-cloning/blob/master/images/original.jpg)
 ![Image cropped to region of interest](https://github.com/ashsiv/CNN-based-driving-behavior-cloning/blob/master/images/cropped.JPG)
 
 
