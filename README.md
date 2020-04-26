@@ -29,7 +29,7 @@ Multiple camera images aid data augmentation. For example, if the model is train
 During training, the left and right camera images are used to train the model as if they were coming from the center camera. For this purpose, a steering offset factor of + 0.2 deg is used for left image and a steering offset of -0.2 deg is used for the right image.
 
 ---
-## Model summary
+## Keras model summary
 ```
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
