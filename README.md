@@ -63,7 +63,10 @@ dense_4 (Dense)              (None, 1)                 11
 ```
 ---
 ## Training and Validation loss
-For chosen three epochs, the training and validation loss are found to be monotonically decreasing.
+
+* The model is trained for 3 epochs and an adam optimizer is used.
+* A dropout function is added before the Dense (vector) layers to avoid overfitting.
+* The training and validation losses are found to be monotonically decreasing.
 ```
 Epoch 1/3
 53/53 [==============================] - 45s 842ms/step - loss: 0.0316 - val_loss: 0.0271
