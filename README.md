@@ -10,18 +10,25 @@ In this project, a CNN Neural Network architecture is trained with user driving 
 
 ---
 ## Data Preprocessing
+### 2D Cropping
 The incoming data from three cameras (left, right and center) are first cropped to appropriate size before subjecting them to training. This helps to keep the region of focus only within the lane of interest. As you can see, cropping helps to remove unnecessary background information such as hood of the car, sky, mountains etc. Plus computatinally it is effective to work with cropped image sizes.
 
-Original Image:
+#### Original Image:
 ![Image from camera](https://github.com/ashsiv/CNN-based-driving-behavior-cloning/blob/master/images/original.jpg)
-Cropped Image:
+#### Cropped Image:
 ![Image cropped to region of interest](https://github.com/ashsiv/CNN-based-driving-behavior-cloning/blob/master/images/cropped.JPG)
 
+### Normalization
+In keras implementation, a lambda layer is used to parallelize image normalization
+```
+model.add(Lambda(lambda x: (x / 255.0) - 0.5, input_shape=(160,320,3)))
+```
 ### Steering offset 
 Multiple camera images aid data augmentation. For example, if the model is trained to associate a given image from the center camera with a left turn, then the model can also be trained to associate the corresponding image from the left camera with a somewhat softer left turn and the  image from the right camera with an even harder left turn. 
 During training, the left and right camera images are used to train the model as if they were coming from the center camera. For this purpose, a steering offset factor of + 0.2 deg is used for left image and a steering offset of -0.2 deg is used for the right image.
 ---
 ## Model summary
+```
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
@@ -51,6 +58,7 @@ dense_3 (Dense)              (None, 10)                510
 _________________________________________________________________
 dense_4 (Dense)              (None, 1)                 11        
 =================================================================
+```
 ---
 ## Training and Validation loss
 For chosen three epochs, the training and validation loss are found to be monotonically decreasing.
